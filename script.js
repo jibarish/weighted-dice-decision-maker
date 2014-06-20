@@ -7,6 +7,8 @@ function showOptions() {
   var options = document.getElementById("options");
   var numOptions = document.getElementById("numOptions").value;
 
+  // clear answer
+  document.getElementById("answer").innerHTML = "";
   // clear form
   while (options.hasChildNodes()) {
     options.removeChild(options.lastChild);
@@ -15,10 +17,19 @@ function showOptions() {
   for (var i = 0; i < numOptions; i++) {
     var label = document.createElement("label");
     var textField = document.createElement("input");
-    label.innerHTML = "".concat("Option ", i+1, ": ");
-    textField.setAttribute("type", "text");    
+    var slider = document.createElement("input");
+    // format label for alignment
+    if (i < 9) {
+      label.innerHTML = "".concat("&nbsp; Option ", i+1, ": ");  
+    } else {
+      label.innerHTML = "".concat("Option ", i+1, ": ");  
+    }
+    textField.setAttribute("type", "text");
+    slider.setAttribute("type", "range");
     options.appendChild(label);
     options.appendChild(textField);
+    options.appendChild(slider);
+
     options.appendChild(document.createElement("br"));
   }
 
@@ -37,8 +48,8 @@ function makeDecision() {
   var answer = "";
   
   // calculate answer
-  choice = Math.floor( Math.random() * ++numOptions );
-  answer = options.elements[choice].value;
-
+  choice = Math.floor( Math.random() * numOptions );
+  answer = options.elements[parseInt(choice*2)].value;  // even fields are text
+  // display answer                                              
   document.getElementById("answer").innerHTML = answer;
 }
