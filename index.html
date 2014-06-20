@@ -9,7 +9,8 @@
   <body>
     <h1>Weighted Dice Decision Maker</h1>
     <form>
-      How many options? <input id="numOptions" type="number" min="0"><br>
+      How many options? <input id="numOptions" type="number" min="0" 
+                          onkeypress="return handleKeyPressNumField(event)"><br>
     </form><br>
     <button onclick="showOptions()">Enter Options</button><br><br>
     <form id="options"></form><br>

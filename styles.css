@@ -6,10 +6,6 @@ h1 {
   color: #005;
 }
 
-ul {
-  list-style-type: none;
-}
-
 #makeDecision {
   display: none;
 }
